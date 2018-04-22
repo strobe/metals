@@ -9,14 +9,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Metals</title>
+    <title>Installation - Metals</title>
     <meta name="generator" content="Hugo 0.39" />
 
     
-    <link rel="canonical" href="http://localhost:59961/metals/">
+    <link rel="canonical" href="http://localhost:59961/metals/contributors/installation/">
     
 
-    <meta property="og:url" content="http://localhost:59961/metals/">
+    <meta property="og:url" content="http://localhost:59961/metals/contributors/installation/">
     <meta property="og:title" content="Metals">
     <meta property="og:image" content="http://localhost:59961/metals/logo.png">
     <meta name="apple-mobile-web-app-title" content="Metals">
@@ -67,9 +67,6 @@
     <script src="http://localhost:59961/metals/javascripts/modernizr.js"></script>
 
     
-    <link href="http://localhost:59961/metals/index.xml" rel="alternate" type="application/rss+xml" title="Metals" />
-    <link href="http://localhost:59961/metals/index.xml" rel="feed" type="application/rss+xml" title="Metals" />
-    
 
   </head>
   <body class="palette-primary-blue-grey palette-accent-red">
@@ -95,7 +92,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Metals
+        Installation
       </div>
     </div>
 
@@ -160,11 +157,14 @@
 
 
 
-<a  title="Installation" href="http://localhost:59961/metals/contributors/installation/">
+<a class="current" title="Installation" href="http://localhost:59961/metals/contributors/installation/">
 	
 	Installation
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -236,12 +236,99 @@
 
 	<article class="article">
 		<div class="wrapper">
-			
-				<h1>Metals </h1>
-
-				<p>This is the homepage of metals</p>
+			<h1>Installation </h1>
 
 			
+
+<blockquote>
+<p>⚠️ This project is very alpha stage. Expect bugs and incomplete documentation.</p>
+</blockquote>
+
+<p>The following instructions are intended for contributors who want to try Metals
+and provide feedback. We do not provide support for day-to-day usage of Metals.</p>
+
+<h1 id="global-setup">Global setup</h1>
+
+<p>These steps are required once per machine.</p>
+
+<h2 id="sbt-plugin">sbt plugin</h2>
+
+<p>The server needs to access some metadata about the build configuration. This
+data are produced by an sbt plugin.</p>
+
+<p>You can install the plugin with (replace <code>&lt;version&gt;</code> with the latest available version)</p>
+
+<p><a href="https://bintray.com/scalameta/sbt-plugins/sbt-metals/_latestVersion"><img src="https://api.bintray.com/packages/scalameta/sbt-plugins/sbt-metals/images/download.svg" alt="Download" /></a></p>
+
+<pre><code class="language-scala">addSbtPlugin(&quot;org.scalameta&quot; % &quot;sbt-metals&quot; % &quot;&lt;version&gt;&quot;)
+</code></pre>
+
+<p>You can add the plugin to a specific project (adding it to <code>project/plugins.sbt</code>) or globally adding it to:</p>
+
+<ul>
+<li>(sbt 1) <code>~/.sbt/1.0/plugins/plugins.sbt</code></li>
+<li>(sbt 0.13) <code>~/.sbt/0.13/plugins/plugins.sbt</code></li>
+</ul>
+
+<h2 id="vscode-extension">VSCode extension</h2>
+
+<p>The VSCode extension is <a href="https://marketplace.visualstudio.com/items?itemName=scalameta.metals">published on the Marketplace</a>.
+You can open VSCode and search for it or click <a href="vscode:extension/scalameta.metals">here</a> to install
+it directly.</p>
+
+<h1 id="per-project-setup">Per-project setup</h1>
+
+<p>These steps are required on each project.</p>
+
+<h2 id="quick-start">Quick-start</h2>
+
+<p>The quickest way to get started with Metals is to use the <code>metalsSetup</code> command in sbt.</p>
+
+<pre><code>sbt
+&gt; metalsSetup
+</code></pre>
+
+<p>The command will create the necessary metadata in the <code>.metals</code> directory
+(which you should not checkout into version control) and setup the <code>semanticdb-scalac</code> compiler
+plugin for the current sbt ession.</p>
+
+<p>You should not checkout the <code>.metals</code> directory into version control. We recommend to add it to your
+project&rsquo;s <code>.gitignore</code> or/and to your global <code>.gitignore</code>:</p>
+
+<pre><code>echo &quot;.metals/&quot; &gt;&gt; .gitignore
+</code></pre>
+
+<p>Note that you will need to invoke <code>metalsSetup</code> (or <code>semanticdbEnable</code>) whenever you close and
+re-open sbt. For a more persistent setup, keep reading.</p>
+
+<h2 id="persisting-the-semanticdb-scalac-compiler-plugin">Persisting the semanticdb-scalac compiler plugin</h2>
+
+<p>Some features like definition/references/hover rely on artifacts produced by a compiler plugin
+called <code>semanticdb-scalac</code>.</p>
+
+<p><code>metalsSetup</code> enables the plugin on the current session (by invoking <code>semanticdbEnable</code>), but you
+can choose to enable it permanently on your project by adding these two settings in your sbt build
+definition:</p>
+
+<pre><code class="language-scala">addCompilerPlugin(MetalsPlugin.semanticdbScalac)
+scalacOptions += &quot;-Yrangepos&quot;
+</code></pre>
+
+<h2 id="start-editing">Start editing</h2>
+
+<p>Open your project in VSCode (<code>code .</code> from your terminal) and open a Scala file;
+the server will now start.</p>
+
+<p>Please note that it may take a few seconds for the server to start and there&rsquo;s
+currently no explicit indication that the server has started (other than
+features starting to work). To monitor the server activity, we suggest to watch
+the log file in your project&rsquo;s target directory, for instance:
+<code>tail -f .metals/metals.log</code>. Alternatively, you can watch this log in the
+VSCode output panel (selecting Metals on the right).</p>
+
+<p>Finally, since most features currently rely on a successful compilation step,
+make sure you incrementally compile your project by running <code>~compile</code> in <code>sbt</code>.</p>
+
 
 			<aside class="copyright" role="note">
 				
@@ -254,23 +341,37 @@
 			<footer class="footer">
 				
 
-
-
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
+  
+      <a href="http://localhost:59961/metals/" title="Metals">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Metals
+            </div>
+          </div>
+        </div>
+      </a>
+  
   </div>
 
-  
-  
   <div class="next">
-      <a href="http://localhost:59961/metals/contributors/" title="Contributors">
+  
+      <a href="http://localhost:59961/metals/contributors/new-build-tool/" title="Integrating a new build tool">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              Contributors
+              Integrating a new build tool
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">
@@ -278,8 +379,11 @@
           </div>
         </div>
       </a>
+  
   </div>
 </nav>
+
+
 
 
 
