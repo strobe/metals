@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metals</title>
+    <link>http://scalameta.org/metals/</link>
+    <description>Recent content on Metals</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Mar 2016 21:07:13 +0100</lastBuildDate>
+    
+	<atom:link href="http://scalameta.org/metals/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Metals</title>
+      <link>http://scalameta.org/metals/</link>
+      <pubDate>Tue, 08 Mar 2016 21:07:13 +0100</pubDate>
+      
+      <guid>http://scalameta.org/metals/</guid>
+      <description>This is the homepage of metals</description>
+    </item>
+    
+  </channel>
+</rss>
