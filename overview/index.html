@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Overview - Metals</title>
+    <meta name="generator" content="Hugo 0.39" />
+
+    
+    <link rel="canonical" href="http://scalameta.org/metals/overview/">
+    
+
+    <meta property="og:url" content="http://scalameta.org/metals/overview/">
+    <meta property="og:title" content="Metals">
+    <meta property="og:image" content="http://scalameta.org/metals/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Metals">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://scalameta.org/metals/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://scalameta.org/metals/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://scalameta.org/metals/fonts/icon.eot');
+        src: url('http://scalameta.org/metals/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://scalameta.org/metals/fonts/icon.woff')
+               format('woff'),
+             url('http://scalameta.org/metals/fonts/icon.ttf')
+               format('truetype'),
+             url('http://scalameta.org/metals/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://scalameta.org/metals/stylesheets/application.css">
+    <link rel="stylesheet" href="http://scalameta.org/metals/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://scalameta.org/metals/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://scalameta.org/metals/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://scalameta.org/metals/style.css">
+    
+    <script src="http://scalameta.org/metals/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-red">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Overview
+      </div>
+    </div>
+
+    
+
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://scalameta.org/metals/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://scalameta.org/metals/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>Metals <span class="version">0.1.0</span></strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Contributors</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Installation" href="/metals/contributors/installation/">
+	
+	Installation
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Integrating a new editor" href="/metals/contributors/new-editor/">
+	
+	Integrating a new editor
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Integrating a new build tool" href="/metals/contributors/new-build-tool/">
+	
+	Integrating a new build tool
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Users</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Installation" href="/metals/users/installation/">
+	
+	Installation
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Overview </h1>
+
+			
+
+<p>This document is an overview of the Metals project. Metals is a community driven
+project with no official funding or dedicated resources.</p>
+
+<ul>
+<li><a href="#simple-installation"><strong>Simple installation</strong></a>: importing a project should be
+simple and require as few steps as possible.</li>
+<li><a href="#correct-diagnostics"><strong>Correct diagnostics</strong></a>: the editor should not show
+spurious red squiggles, even at the cost of higher latency.</li>
+<li><a href="#robust-navigation"><strong>Robust navigation</strong></a>: goto definition should work
+everywhere, even for Java dependencies.</li>
+<li><a href="#fast-completions"><strong>Fast completions</strong></a>: completions suggestions should
+respond in ~200ms, even at the cost of occasionally wrong results.</li>
+<li><a href="#low-cpu-and-memory-usage"><strong>Low CPU and memory usage</strong></a>: indexing should run
+in the background and not get in your way from coding.</li>
+<li><a href="#solid-refactoring"><strong>Solid refactoring</strong></a>: rename, organize imports and
+insert type annotation should always leave the codebase in a compiling state.</li>
+</ul>
+
+<h2 id="simple-installation">Simple installation</h2>
+
+<p>The first you do with an IDE is boring but critical: import a project. The
+Language Server Protocol does not provide utilities to extract metadata from a
+build tool (module source files, dependencies, configuration data), so we are
+still exploring what is the best option.</p>
+
+<ul>
+<li><p>[x] sbt-metals: plugin that provides a <code>metalsSetup</code> task to export sbt
+build metadata.</p></li>
+
+<li><p>[ ] The <a href="https://github.com/scalacenter/bsp/blob/master/docs/bsp.md">BSP</a>: LSP-inspired protocol to standardize on communication between a
+language server and build tool. In theory, should enable automatic
+importing of projects without custom build plugins or manual installation
+steps.</p></li>
+</ul>
+
+<h2 id="correct-diagnostics">Correct diagnostics</h2>
+
+<p>Red squiggles are one of the most basic but also difficult-to-support features
+in an IDE. The Scala compiler was not designed for interactivity, which makes
+fast and correct diagnostics difficult to support in the editor. We are still
+unsure what the best model is for diagnostics, so we are still exploring what is
+the best option.</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Scala Presentation Compiler: interactively publish squiggles as you type.
+  Provides low latency but may get off-sync with build diagnostics.
+
+<ul>
+<li>Disabled by default. Can be enabled with configuration option
+<code>scalac.diagnostics.enabled=true</code>.</li>
+<li>Requires <a href="#metalssetup"><code>metalsSetup</code></a>.</li>
+</ul></label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> sbt server: sbt 1.1 added LSP support so that build errors are reported
+  directly to the editor. Metals can connect to sbt server as a client to
+  trigger batch compilation on file save. Guarantees diagnostics are always
+  in-sync with build diagnostics but at the cost of higher latency.
+
+<ul>
+<li>Disabled by default. Can be enabled with configuration option
+<code>sbt.enabled=true</code>.</li>
+<li>Requires a running sbt 1.1 server or later.</li>
+</ul></label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Linting with <a href="https://scalacenter.github.io/scalafix/">Scalafix</a>.
+
+<ul>
+<li>Requires <a href="#semanticdb-scalac">semanticdb-scalac</a>.</li>
+<li>Supports both built-in and custom linter rules.</li>
+</ul></label></li>
+</ul>
+
+<h2 id="robust-navigation">Robust navigation</h2>
+
+<p>Goto definition and find references is a great way to navigate and learn about a
+codebase. Metals uses <a href="https://github.com/scalameta/scalameta/blob/master/semanticdb/semanticdb3/semanticdb3.md">SemanticDB</a>, a data model for semantic information
+about programs in Scala and other languages, to power code navigation. Indexing
+happens with during batch compilation in the build tool, using a similar
+architecture as <a href="https://youtu.be/jGJhnIT-D2M">Index-While-Building</a> in XCode 9.</p>
+
+<ul>
+<li><p>Goto definition (<code>textDocument/definition</code>). Requires
+<a href="#semanticdb-scalac">semanticdb-scalac</a>.</p>
+
+<ul>
+<li><p>[x] project -&gt; project.</p></li>
+
+<li><p>[x] project -&gt; Scala dependency. Requires <a href="#metalssetup"><code>metalsSetup</code></a>.</p></li>
+
+<li><p>[x] project -&gt; Java dependency. Requires <a href="#metalssetup"><code>metalsSetup</code></a>.</p></li>
+
+<li><p>[ ] dependency -&gt; dependency.</p></li>
+</ul></li>
+
+<li><p>[x] Find references (<code>textDocument/references</code>). Works the same as goto
+  definition.</p>
+
+<ul>
+<li><p>[x] project references</p></li>
+
+<li><p>[ ] Scala dependency references</p></li>
+
+<li><p>[ ] Java dependency references</p></li>
+</ul></li>
+
+<li><p>[x] Highlight references to symbol at position
+  (<code>textDocument/documentHighlight</code>).</p>
+
+<ul>
+<li>Disabled by default. Can be enabled with configuration option
+<code>highlight.enabled=true</code>.</li>
+</ul></li>
+
+<li><p>[x] Goto symbol in file (<code>textDocument/documentSymbol</code>)</p></li>
+
+<li><p>[x] Goto symbol in workspace (<code>workspace/symbol</code>)</p></li>
+
+<li><p>[x] Symbol outline in the sidebar as you type (<code>textDocument/documentSymbol</code>).</p></li>
+
+<li><p>[ ] Goto implementation (<code>textDocument/implementation</code>)</p></li>
+
+<li><p>[ ] Goto type definition (<code>textDocument/typeDefinition</code>)</p></li>
+
+<li><p>[x] Show type of symbol at position (<code>textDocument/hover</code>). Requires
+  <a href="#semanticdb-scalac">semanticdb-scalac</a>.</p></li>
+
+<li><p>[ ] Show type of expression at position (<code>textDocument/hover</code>).</p></li>
+</ul>
+
+<h2 id="fast-completions">Fast completions</h2>
+
+<p>Auto completions are a great way to explore a library interface and save
+keystrokes while writing code. Completions are sensitive to latency since
+suggestions update on every keystroke. Correct and fast completions are
+difficult to support in Scala due to several challenges:</p>
+
+<ol>
+<li>the presentation compiler does not lend itself well to interactive editing</li>
+<li>some completions semantics are difficult to reproduce outside of the
+compiler
+
+<ul>
+<li>extension methods depend on implicit conversions</li>
+<li>whitebox macros can refine result types which influences completion
+suggestions</li>
+</ul></li>
+</ol>
+
+<p>Given these challenges, we are still exploring how to best support correct and
+fast completions.</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Scala Presentation Compiler. Faithfully reproduces full language semantics
+  but may be slow and difficult to keep in-sync with the build for
+  long-running interactive sessions.
+
+<ul>
+<li>Disabled by default. Can be enabled with configuration option
+<code>scalac.completions.enabled=true</code>.</li>
+<li>Requires <a href="#metalssetup"><code>metalsSetup</code></a>.</li>
+<li>Shows parameter list as you type (<code>textDocument/signatureHelp</code>).</li>
+</ul></label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Auto-import global symbol from classpath.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Auto-expand abstract methods when implementing a trait or abstract class.</label></li>
+</ul>
+
+<h2 id="low-cpu-and-memory-usage">Low CPU and memory usage</h2>
+
+<p>Heavy resource usage is one of the most frequent complaints about IDEs. Low CPU
+and memory usage becomes even more important when working in larger codebases.</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Persistent symbol index: currently Metals stores the navigation index
+  in-memory, which can consume multiple GB of RAM for large projects.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Faster Scala and Java outline indexing. Currently, Metals can index the
+  outlines of Scala sources at ~30-40k loc/s and Java sources at ~450k
+  loc/s. Indexing should be able to process ~500k loc/s.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Throttled background indexing. Currently, all available CPUs are utilized
+  for indexing, which makes the computer slow for a period after running
+  <code>metalsSetup</code>.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Faster &ldquo;open symbol in workspace&rdquo; (<code>workspace/symbol</code>). Currently, uses a
+  naive linear search algorithm that is slow for large projects.</label></li>
+</ul>
+
+<h2 id="solid-refactoring">Solid refactoring</h2>
+
+<p>Refactoring makes you more productive while editing code. On demand refactoring
+such as rename or formatting are great to save keystrokes for frequent
+mechanical tasks. Passive refactoring suggestions help you learn new language
+best practices.</p>
+
+<ul class="task-list">
+<li>Format (<code>textDocument/formatting</code>) with <a href="http://scalafmt.org/">Scalafmt</a>.
+
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Whole file on demand (<code>textDocument/formatting</code>)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Selected range (<code>textDocument/rangeFormatting</code>)</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> On save (<code>textDocument/willSaveWaitUntil</code>)</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> As you type (<code>textDocument/onTypeFormatting</code>)</label></li>
+<li>Scalafmt version can be configured with <code>scalafmt.version=&quot;1.3.0&quot;</code>.</li>
+<li>NOTE. The first time Scalafmt is invoked is slow since it requires
+downloading the configured Scalafmt version with Coursier.</li>
+</ul></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Rename local symbol. Requires <a href="#semanticdb-scalac">semanticdb-scalac</a>.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Rename global symbol.</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Remove unused imports (<code>textDocument/codeActions</code>). Requires
+  <a href="#semanticdb-scalac">semanticdb-scalac</a>.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Move class.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Organize imports.</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Insert type annotation.</label></li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<h3 id="metalssetup">metalsSetup</h3>
+
+<p>Task in sbt-metals to generate build metadata. Run <code>metalsSetup</code> to generate
+metadata for all modules in the build, including main and test sources.</p>
+
+<h3 id="semanticdb-scalac">semanticdb-scalac</h3>
+
+<p>Compiler plugin that emits <a href="https://github.com/scalameta/scalameta/blob/master/semanticdb/semanticdb3/semanticdb3.md">SemanticDB</a> files during batch compilation in the
+build tool. Overhead of the compiler plugin is ~30%, which may improve in the
+future.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://scalameta.org/metals/contributors/new-editor/" title="Integrating a new editor">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Integrating a new editor
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://scalameta.org/metals/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

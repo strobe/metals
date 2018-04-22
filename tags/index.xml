@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Metals</title>
-    <link>http://localhost:59961/metals/tags/</link>
+    <link>http://scalameta.org/metals/tags/</link>
     <description>Recent content in Tags on Metals</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://localhost:59961/metals/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://scalameta.org/metals/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
