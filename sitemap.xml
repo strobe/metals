@@ -13,27 +13,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:59961/metals/contributors/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:59961/metals/contributors/installation/</loc>
-  </url>
-  
-  <url>
-    <loc>http://localhost:59961/metals/users/installation/</loc>
-  </url>
-  
-  <url>
-    <loc>http://localhost:59961/metals/contributors/new-build-tool/</loc>
-  </url>
-  
-  <url>
-    <loc>http://localhost:59961/metals/contributors/new-editor/</loc>
-  </url>
-  
-  <url>
     <loc>http://localhost:59961/metals/</loc>
     <lastmod>2016-03-08T21:07:13+01:00</lastmod>
     <priority>0</priority>
@@ -41,11 +20,6 @@
   
   <url>
     <loc>http://localhost:59961/metals/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:59961/metals/users/</loc>
     <priority>0</priority>
   </url>
   

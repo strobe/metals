@@ -20,47 +20,5 @@
       <description>This is the homepage of metals</description>
     </item>
     
-    <item>
-      <title>Installation</title>
-      <link>http://localhost:59961/metals/contributors/installation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:59961/metals/contributors/installation/</guid>
-      <description>⚠️ This project is very alpha stage. Expect bugs and incomplete documentation.
- The following instructions are intended for contributors who want to try Metals and provide feedback. We do not provide support for day-to-day usage of Metals.
-Global setup These steps are required once per machine.
-sbt plugin The server needs to access some metadata about the build configuration. This data are produced by an sbt plugin.</description>
-    </item>
-    
-    <item>
-      <title>Installation</title>
-      <link>http://localhost:59961/metals/users/installation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:59961/metals/users/installation/</guid>
-      <description>Sorry, nothing to see here Metals is still under active development and it&amp;rsquo;s not intended for general use.
-If you want to contribute to the project, head over to the documentation for contributors.</description>
-    </item>
-    
-    <item>
-      <title>Integrating a new build tool</title>
-      <link>http://localhost:59961/metals/contributors/new-build-tool/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:59961/metals/contributors/new-build-tool/</guid>
-      <description>Metals currently supports only sbt through the sbt-metals plugins and metalsSetup task. However, metals does not require sbt and can be integrated with other build tools.
-The long-term strategy to integrate metals with build tools is to support some standard LSP-inspired protocol. An example of how such a protocol might look like is the draft for a potential &amp;ldquo;Build Server Protocol&amp;rdquo;. Until such a protocol becomes more standard, metals can import build metadata through a custom property file format.</description>
-    </item>
-    
-    <item>
-      <title>Integrating a new editor</title>
-      <link>http://localhost:59961/metals/contributors/new-editor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:59961/metals/contributors/new-editor/</guid>
-      <description>Before writing a new editor client, first check if someone else has managed to integrate metals with your favorite text editor.
- Visual Studio Code, maintained in this repo Atom, maintained by @laughedelic Emacs, maintained by @rossabaker Others, see #217. Please open an issue or ask on gitter if you want to create a new editor client.  To integrate metals with a new editor, a few things should be kept in mind</description>
-    </item>
-    
   </channel>
 </rss>
