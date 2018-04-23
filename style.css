@@ -1,7 +1,13 @@
 .copyright {
-  display: none;
+  visibility: none;
 }
 
 .repo {
   display: none;
+}
+
+@media only screen and (min-width: 720px) {
+  .article .wrapper {
+    padding-top: 96px;
+  }
 }

@@ -75,7 +75,7 @@
 
 
 <div class="backdrop">
-	<div class="backdrop-paper"></div>
+  <div class="backdrop-paper"></div>
 </div>
 
 <input class="toggle" type="checkbox" id="toggle-drawer">
@@ -83,7 +83,7 @@
 <label class="toggle-button overlay" for="toggle-drawer"></label>
 
 <header class="header">
-	<nav aria-label="Header">
+  <nav aria-label="Header">
   <div class="bar default">
     <div class="button button-menu" role="button" aria-label="Menu">
       <label class="toggle-button icon icon-menu" for="toggle-drawer">
@@ -99,8 +99,12 @@
     
 
     
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/scalameta/metals" title="@scalameta/metals on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
     
-        
+
+    
   </div>
   <div class="bar search">
     <div class="button button-close" role="button" aria-label="Close">
@@ -116,11 +120,12 @@
     </div>
   </div>
 </nav>
+
 </header>
 
 <main class="main">
-	<div class="drawer">
-		<nav aria-label="Navigation">
+  <div class="drawer">
+    <nav aria-label="Navigation">
   <a href="http://scalameta.org/metals/" class="project">
     <div class="banner">
       
@@ -157,7 +162,7 @@
 
 
 
-<a class="current" title="Installation" href="/metals/contributors/installation/">
+<a class="current" title="Installation" href="http://scalameta.org/metals/contributors/installation/">
 	
 	Installation
 </a>
@@ -173,7 +178,7 @@
 
 
 
-<a  title="Integrating a new editor" href="/metals/contributors/new-editor/">
+<a  title="Integrating a new editor" href="http://scalameta.org/metals/contributors/new-editor/">
 	
 	Integrating a new editor
 </a>
@@ -186,7 +191,7 @@
 
 
 
-<a  title="Integrating a new build tool" href="/metals/contributors/new-build-tool/">
+<a  title="Integrating a new build tool" href="http://scalameta.org/metals/contributors/new-build-tool/">
 	
 	Integrating a new build tool
 </a>
@@ -210,7 +215,7 @@
 
 
 
-<a  title="Installation" href="/metals/users/installation/">
+<a  title="Installation" href="http://scalameta.org/metals/users/installation/">
 	
 	Installation
 </a>
@@ -219,6 +224,24 @@
 
       
     </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Project overview" href="http://scalameta.org/metals/overview/">
+	
+	Project overview
+</a>
+
+
+
   
 </li>
 
@@ -232,17 +255,23 @@
   </div>
 </nav>
 
-	</div>
+  </div>
 
-	<article class="article">
-		<div class="wrapper">
-			<h1>Installation </h1>
+  <article class="article">
+    <div class="wrapper">
+      <div class="stretch" style="text-align: right">
+        <a target="_blank" href='https://github.com/scalameta/metals/edit/master/docs/contributors/installation.md'>
+          EDIT THIS PAGE
+        </a>
+      </div>
+      <h1>Installation </h1>
 
-			
+      
 
-<blockquote>
-<p>⚠️ This project is very alpha stage. Expect bugs and incomplete documentation.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This project is very alpha stage. Expect bugs and incomplete documentation.</p>
+</div>
 
 <p>The following instructions are intended for contributors who want to try Metals
 and provide feedback. We do not provide support for day-to-day usage of Metals.</p>
@@ -330,16 +359,11 @@ VSCode output panel (selecting Metals on the right).</p>
 make sure you incrementally compile your project by running <code>~compile</code> in <code>sbt</code>.</p>
 
 
-			<aside class="copyright" role="note">
-				
-				Documentation built with
-				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
-				using the
-				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
-			</aside>
+      <aside class="copyright" role="note">
+      </aside>
 
-			<footer class="footer">
-				
+      <footer class="footer">
+        
 
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
@@ -371,18 +395,18 @@ make sure you incrementally compile your project by running <code>~compile</code
 
 
 
-			</footer>
-		</div>
-	</article>
+      </footer>
+    </div>
+  </article>
 
-	<div class="results" role="status" aria-live="polite">
-		<div class="scrollable">
-			<div class="wrapper">
-				<div class="meta"></div>
-				<div class="list"></div>
-			</div>
-		</div>
-	</div>
+  <div class="results" role="status" aria-live="polite">
+    <div class="scrollable">
+      <div class="wrapper">
+        <div class="meta"></div>
+        <div class="list"></div>
+      </div>
+    </div>
+  </div>
 </main>
 
     <script>
