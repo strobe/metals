@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Integrating a new editor · Metals</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Integrating a new editor · Metals"/><meta property="og:type" content="website"/><meta property="og:url" content="http://scalameta.org/metals/index.html"/><meta property="og:description" content="Before writing a new editor client, first check if someone else has managed to"/><meta property="og:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><link rel="shortcut icon" href="/metals/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><link rel="stylesheet" href="/metals/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/metals/"><img class="logo" src="/metals/img/scalameta-logo.png" alt="Metals"/><h2 class="headerTitle">Metals</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/metals/docs/installation-contributors.html" target="_self">Docs</a></li><li class=""><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Contributors</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Overview</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/overview.html">Overview</a></li></ul></div><div class="navGroup navGroupActive"><h3>Contributors</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-contributors.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/metals/docs/new-editor.html">Integrating a new editor</a></li><li class="navListItem"><a class="navItem" href="/metals/docs/new-build-tool.html">Integrating a new build tool</a></li></ul></div><div class="navGroup navGroupActive"><h3>Users</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-users.html">Installation</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/scalameta/metals/edit/master/docs/new-editor.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Integrating a new editor</h1></header><article><div><span><p>Before writing a new editor client, first check if someone else has managed to
+integrate metals with your favorite text editor.</p>
+<ul>
+<li><a href="https://github.com/scalameta/metals/blob/master/vscode-extension/src/extension.ts">Visual Studio Code</a>,
+maintained in this repo</li>
+<li><a href="https://github.com/laughedelic/atom-ide-scala">Atom</a>, maintained by
+<a href="https://github.com/laughedelic">@laughedelic</a></li>
+<li><a href="https://github.com/rossabaker/lsp-scala">Emacs</a>, maintained by
+<a href="https://github.com/rossabaker">@rossabaker</a></li>
+<li>Others, see <a href="https://github.com/scalameta/metals/issues/217">#217</a>. Please
+open an issue or ask on <a href="https://gitter.im/scalameta/metals">gitter</a> if you
+want to create a new editor client.</li>
+</ul>
+<p>To integrate metals with a new editor, a few things should be kept in mind</p>
+<!-- TOC depthFrom:2 depthTo:2 -->
+<ul>
+<li><a href="#launching-the-server">Launching the server</a></li>
+<li><a href="#working-directory">Working directory</a></li>
+<li><a href="#file-watching">File watching</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#commands">Commands</a></li>
+<li><a href="#code-actions">Code actions</a></li>
+</ul>
+<!-- /TOC -->
+<h2><a class="anchor" aria-hidden="true" id="launching-the-server"></a><a href="#launching-the-server" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Launching the server</h2>
+<p>The server can be launched with
+<a href="https://github.com/coursier/coursier/">coursier</a></p>
+<p><a href="https://bintray.com/scalameta/maven/metals/_latestVersion"> <img src="https://api.bintray.com/packages/scalameta/maven/metals/images/download.svg" alt="Download"> </a></p>
+<pre><code class="hljs">coursier launch -r bintray:scalameta/maven org<span class="hljs-selector-class">.scalameta</span>:metals_2.<span class="hljs-number">12</span>:SERVER_VERSION -M scala<span class="hljs-selector-class">.meta</span><span class="hljs-selector-class">.metals</span><span class="hljs-selector-class">.Main</span>
+</code></pre>
+<p><code>SERVER_VERSION</code> can either be a locally published version of the metals server
+via <code>sbt metals/publishLocal</code> or an unsupported pre-release published
+automatically to Bintray by our Travis CI. There are no stable or officially
+supported releases of metals.</p>
+<p>The following Java options are recommended:</p>
+<ul>
+<li><code>-XX:+UseG1GC -XX:+UseStringDeduplication</code>: to reduce memory consumption from
+navigation indexes. May not be necessary in the future.</li>
+</ul>
+<p>Refer to the coursier documentation for how to build a fat jar or configure java
+parameters.</p>
+<h2><a class="anchor" aria-hidden="true" id="working-directory"></a><a href="#working-directory" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working directory</h2>
+<p>The server needs to be started in the same directory matching the <code>rootUri</code>
+parameter of the <code>initialize</code> request. Goto definition and other
+SemanticDB-features will not work if the working directory does not match the
+root directory of the build.</p>
+<p>NOTE. Discarding <code>rootUri</code> is not compliant with LSP, consider contributing to
+<a href="https://github.com/scalameta/metals/issues/216">#216</a> if you are affected by this issue.</p>
+<h2><a class="anchor" aria-hidden="true" id="file-watching"></a><a href="#file-watching" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File watching</h2>
+<p>Metals delegates file watching to the editor client by listening for
+<a href="https://microsoft.github.io/language-server-protocol/specification#workspace_didChangeWatchedFiles"><code>workspace/didChangeWatchedFiles</code></a> notifications. The server expects the
+client to send notifications for changes to files matching the following
+patterns</p>
+<ul>
+<li><code>.metals/buildinfo/**/*.properties</code>: build metadata to enable goto definition
+for the classpath, completions with the presentation compiler and refactoring
+with Scalafix.</li>
+<li><code>**/*.semanticdb</code>: artifacts produced by the semanticdb-scalac compiler plugin
+during batch compilation in the build. See
+<a href="https://github.com/scalameta/scalameta/blob/master/semanticdb/semanticdb3/semanticdb3.md">here</a>
+to learn more about SemanticDB. These files are required for goto definition,
+find references, hover and Scalafix to work.</li>
+<li><code>project/target/active.json</code>: an indicator of the running sbt server.
+Watching this file allows metals to (re)connect to the sbt server whenever it
+is (re)started.</li>
+</ul>
+<p>See the VS Code plugin
+<a href="https://github.com/scalameta/metals/blob/fb166f1d81eb77ebd9c6b3ee95e65fb58a907eec/vscode-extension/src/extension.ts#L44-L54">clientOptions</a>
+for an example of how file watching is handled in VS Code.</p>
+<p>The metals server scans the workspace directory for these file patterns on
+startup regardless of file watching notifications. This means goto definition
+and other functionality may work to begin with, but quickly degrade for longer
+running sessions.</p>
+<p>NOTE. The metals server does not use <code>DidChangeWatchedFilesRegistrationOptions</code>
+to register these particular patterns, consider contributing to <a href="https://github.com/scalameta/metals/issues/255">#255</a> if you
+are affected by this issue.</p>
+<h2><a class="anchor" aria-hidden="true" id="configuration"></a><a href="#configuration" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h2>
+<p>Metals uses
+<a href="https://microsoft.github.io/language-server-protocol/specification#workspace_didChangeWatchedFiles"><code>workspace/didChangeConfiguration</code></a>
+notifications to allow end-users to control behavior of the server. The editor
+client is expected to send a <code>workspace/didChangeConfiguration</code> notification
+containing user configuration right after the <code>initialized</code> notification.</p>
+<p>A full list of server configuration options can be found in
+<a href="https://github.com/scalameta/metals/blob/master/metals/src/main/scala/scala/meta/metals/Configuration.scala">Configuration.scala</a>. All configuration options have default values. An
+example of how the configuration options are used from the VS Code plugin can be
+seen in the
+<a href="https://github.com/scalameta/metals/blob/master/vscode-extension/package.json">package.json</a>
+manifest.</p>
+<p>Server side configuration options include settings to enable
+experimental/unstable features such as completions with the presentation
+compiler. Observe that even if metals registers the capability for completions
+during the <code>initialize</code> handshake, the end-user must opt-into enabling
+completions with the configuration setting <code>scalac.completions.enabled=true</code>. If
+completions are disabled in the configuration
+(<code>scalac.completions.enabled=false</code>, default value), then metals responds with
+an empty list of completion suggestions.</p>
+<p>Clients are also encouraged to implement this setting:</p>
+<ul>
+<li><code>serverVersion: String</code>: while metals is still under active development, it is
+recommended to allow end-users to easily configure the version of the metals
+server.</li>
+</ul>
+<p>Note: the <code>scalafmt.onSave: Boolean</code> setting may overlap with existing
+functionality of your editor. For example, in VS Code it's possible to configure
+<code>&quot;editor.formatOnSave&quot;: true</code> to trigger a <code>textDocument/formatting</code> request on
+file save and for that reason the VS Code metals plugin does not support
+<code>scalafmt.onSave</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="commands"></a><a href="#commands" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Commands</h2>
+<p>Metals uses <a href="https://microsoft.github.io/language-server-protocol/specification#workspace_executeCommand"><code>workspace/executeCommand</code></a> requests to allow end-users to
+trigger actions in the server on-demand. The full list of supported commands by
+the server can be found in <a href="https://github.com/scalameta/metals/blob/master/metals/src/main/scala/scala/meta/metals/WorkspaceCommand.scala">WorkspaceCommand.scala</a>. See the VS Code plugin
+<a href="https://github.com/scalameta/metals/blob/master/vscode-extension/package.json">package.json</a> manifest how these commands are configured in VS Code. Observe
+that <code>restartServer</code> must be handled client-side.</p>
+<h2><a class="anchor" aria-hidden="true" id="code-actions"></a><a href="#code-actions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code actions</h2>
+<p>Metals uses <a href="https://microsoft.github.io/language-server-protocol/specification#textDocument_codeAction"><code>textDocument/codeAction</code></a> requests from the editor client to
+provide passive refactoring hints with scalafix. Currently, only the &quot;removed
+unused import&quot; refactoring is supported but more refactorings may be added in
+the future.</p>
+<p><img src="assets/code-actions.png" align="right" width="150px" style="padding-left: 20px"/></p>
+<p>The sequence diagram for refactoring hints is quite involved.</p>
+<ol>
+<li>Server publishes warning diagnostics about &quot;Unused import&quot;</li>
+<li>Client sends a code action request with the &quot;Unused import&quot; warning as part
+of <code>context.diagnostics</code>. Server responds with instructions to execute the
+<code>scalafixUnusedImport</code> command.</li>
+<li>User triggers the <code>scalafixUnusedImports</code> command on-demand.</li>
+<li>Server sends request to apply a set of text edits. Client responds if edit
+was successfully applied or not.</li>
+<li>Server responds to <code>workspace/executeCommand</code> request.</li>
+</ol>
+<p>In VS Code, code actions are suggested to the user via light bulbs when hovering
+above the &quot;Unused import&quot; warnings and can be triggered with the <code>CMD</code> + <code>.</code>
+shortcut (on macOS).</p>
+<p><img src="/metals/docs/assets/code-actions.gif" alt=""></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation-contributors.html">← Installation</a><a class="docs-next button" href="new-build-tool.html">Integrating a new build tool →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#launching-the-server">Launching the server</a></li><li><a href="#working-directory">Working directory</a></li><li><a href="#file-watching">File watching</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#commands">Commands</a></li><li><a href="#code-actions">Code actions</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C;"><section class="copyright">Copyright © 2018 Metals</section></footer></div></body></html>
