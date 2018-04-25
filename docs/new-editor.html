@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Integrating a new editor · Metals</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Integrating a new editor · Metals"/><meta property="og:type" content="website"/><meta property="og:url" content="http://scalameta.org/metals/index.html"/><meta property="og:description" content="Before writing a new editor client, first check if someone else has managed to"/><meta property="og:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><link rel="shortcut icon" href="/metals/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><link rel="stylesheet" href="/metals/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/metals/"><img class="logo" src="/metals/img/scalameta-logo.png" alt="Metals"/><h2 class="headerTitle">Metals</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/metals/docs/installation-contributors.html" target="_self">Docs</a></li><li class=""><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Contributors</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Overview</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/overview.html">Overview</a></li></ul></div><div class="navGroup navGroupActive"><h3>Contributors</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-contributors.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/metals/docs/new-editor.html">Integrating a new editor</a></li><li class="navListItem"><a class="navItem" href="/metals/docs/new-build-tool.html">Integrating a new build tool</a></li></ul></div><div class="navGroup navGroupActive"><h3>Users</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-users.html">Installation</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Integrating a new editor · Metals</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Integrating a new editor · Metals"/><meta property="og:type" content="website"/><meta property="og:url" content="http://scalameta.org/metals/index.html"/><meta property="og:description" content="Before writing a new editor client, first check if someone else has managed to"/><meta property="og:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://scalameta.org/metals/img/scalameta-logo.png"/><link rel="shortcut icon" href="/metals/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><link rel="stylesheet" href="/metals/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/metals/"><img class="logo" src="/metals/img/scalameta-logo.png" alt="Metals"/><h2 class="headerTitle">Metals</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/metals/docs/installation-contributors.html" target="_self">Docs</a></li><li class=""><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Contributors</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Overview</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/overview.html">Overview</a></li></ul></div><div class="navGroup navGroupActive"><h3>Contributors</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-contributors.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/metals/docs/new-editor.html">Integrating a new editor</a></li><li class="navListItem"><a class="navItem" href="/metals/docs/new-build-tool.html">Integrating a new build tool</a></li></ul></div><div class="navGroup navGroupActive"><h3>Users</h3><ul><li class="navListItem"><a class="navItem" href="/metals/docs/installation-users.html">Installation</a></li></ul></div></div></section></div><script>
           var toggler = document.getElementById('navToggler');
           var nav = document.getElementById('docsNav');
           toggler.onclick = function() {
@@ -87,11 +87,52 @@ notifications to allow end-users to control behavior of the server. The editor
 client is expected to send a <code>workspace/didChangeConfiguration</code> notification
 containing user configuration right after the <code>initialized</code> notification.</p>
 <p>A full list of server configuration options can be found in
-<a href="https://github.com/scalameta/metals/blob/master/metals/src/main/scala/scala/meta/metals/Configuration.scala">Configuration.scala</a>. All configuration options have default values. An
+<a href="https://github.com/scalameta/metals/blob/master/metals/src/main/scala/scala/meta/metals/Configuration.scala">Configuration.scala</a>. An
 example of how the configuration options are used from the VS Code plugin can be
 seen in the
 <a href="https://github.com/scalameta/metals/blob/master/vscode-extension/package.json">package.json</a>
 manifest.</p>
+<p>Here are the default values for all the options:</p>
+<pre><code class="hljs css json">{
+  <span class="hljs-attr">"sbt"</span> : {
+    <span class="hljs-attr">"diagnostics"</span> : {
+      <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">"command"</span> : <span class="hljs-string">""</span>
+  },
+  <span class="hljs-attr">"scalac"</span> : {
+    <span class="hljs-attr">"completions"</span> : {
+      <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">"diagnostics"</span> : {
+      <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">false</span>
+    }
+  },
+  <span class="hljs-attr">"scalafmt"</span> : {
+    <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"onSave"</span> : <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"version"</span> : <span class="hljs-string">"1.4.0"</span>,
+    <span class="hljs-attr">"confPath"</span> : <span class="hljs-string">".scalafmt.conf"</span>
+  },
+  <span class="hljs-attr">"scalafix"</span> : {
+    <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"confPath"</span> : <span class="hljs-string">".scalafix.conf"</span>
+  },
+  <span class="hljs-attr">"search"</span> : {
+    <span class="hljs-attr">"indexJDK"</span> : <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"indexClasspath"</span> : <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">"hover"</span> : {
+    <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">"highlight"</span> : {
+    <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">false</span>
+  },
+  <span class="hljs-attr">"rename"</span> : {
+    <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">false</span>
+  }
+}
+</code></pre>
 <p>Server side configuration options include settings to enable
 experimental/unstable features such as completions with the presentation
 compiler. Observe that even if metals registers the capability for completions
@@ -140,11 +181,4 @@ shortcut (on macOS).</p>
 <p><img src="/metals/docs/assets/code-actions.gif" alt=""></p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="installation-contributors.html">← Installation</a><a class="docs-next button" href="new-build-tool.html">Integrating a new build tool →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#launching-the-server">Launching the server</a></li><li><a href="#working-directory">Working directory</a></li><li><a href="#file-watching">File watching</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#commands">Commands</a></li><li><a href="#code-actions">Code actions</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C;"><section class="sitemap"><a href="/metals/" class="nav-home"><img src="/metals/img/scalameta-logo.png" alt="Metals" width="66" height="58"/></a><div><h5>Docs</h5><a href="
                 /metals/docs/overview.html">Overview</a><a href="
-                /metals/docs/installation-contributors.html">Contributors</a></div><div><h5>Community</h5><a href="https://gitter.im/scalameta/metals" target="_blank">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Metals</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-              var search = docsearch({
-                
-                apiKey: '',
-                indexName: '',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+                /metals/docs/installation-contributors.html">Contributors</a></div><div><h5>Community</h5><a href="https://gitter.im/scalameta/metals" target="_blank">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Metals</section></footer></div></body></html>
