@@ -7,5 +7,6 @@
 <url> <loc>http://scalameta.org/docs/new-build-tool.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://scalameta.org/docs/new-build-tool.html" /> </url>
 <url> <loc>http://scalameta.org/docs/new-editor.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://scalameta.org/docs/new-editor.html" /> </url>
 <url> <loc>http://scalameta.org/docs/overview.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://scalameta.org/docs/overview.html" /> </url>
+<url> <loc>http://scalameta.org/docs/troubleshooting.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://scalameta.org/docs/troubleshooting.html" /> </url>
 <url> <loc>http://scalameta.org/docs/website.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://scalameta.org/docs/website.html" /> </url>
 </urlset>
