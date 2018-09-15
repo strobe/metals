@@ -14,6 +14,10 @@
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
 
+                if (!toggler) {
+                  return;
+                }
+
                 toggler.onclick = function(event) {
                   event.preventDefault();
 
@@ -21,7 +25,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/scalameta/metals/edit/master/docs/new-editor.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Integrating a new editor</h1></header><article><div><span><p>Before writing a new editor client, first check if someone else has managed to
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/scalameta/metals/edit/master/docs/new-editor.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Integrating a new editor</h1></header><article><div><span><p>Before writing a new editor client, first check if someone else has managed to
 integrate metals with your favorite text editor.</p>
 <ul>
 <li><a href="https://github.com/scalameta/metals/blob/master/vscode-extension/src/extension.ts">Visual Studio Code</a>,
@@ -49,7 +53,7 @@ want to create a new editor client.</li>
 <p>The server can be launched with
 <a href="https://github.com/coursier/coursier/">coursier</a></p>
 <p>The following script will launch the latest published version of the server:</p>
-<pre><code class="hljs">coursier launch -r bintray:scalameta/maven org<span class="hljs-selector-class">.scalameta</span>:metals_2.<span class="hljs-number">12</span>:<span class="hljs-number">0.1</span>.<span class="hljs-number">0</span>-M1+<span class="hljs-number">264</span>-b2700d29 -M scala<span class="hljs-selector-class">.meta</span><span class="hljs-selector-class">.metals</span><span class="hljs-selector-class">.Main</span>
+<pre><code class="hljs">coursier launch -r bintray:scalameta/maven org<span class="hljs-selector-class">.scalameta</span>:metals_2.<span class="hljs-number">12</span>:<span class="hljs-number">0.1</span>.<span class="hljs-number">0</span>-M1+<span class="hljs-number">262</span>-<span class="hljs-number">5</span>e24738b -M scala<span class="hljs-selector-class">.meta</span><span class="hljs-selector-class">.metals</span><span class="hljs-selector-class">.Main</span>
 </code></pre>
 <p>Our CI publishes a new version of the server at every merge on master; there are currently no stable
 or officially supported releases of Metals.</p>
@@ -113,7 +117,7 @@ seen in the
 <a href="https://github.com/scalameta/metals/blob/master/vscode-extension/package.json">package.json</a>
 manifest.</p>
 <p>Here are the default values for all the options:</p>
-<pre><code class="hljs css languages- json">{
+<pre><code class="hljs css language-json">{
   <span class="hljs-attr">"sbt"</span> : {
     <span class="hljs-attr">"diagnostics"</span> : {
       <span class="hljs-attr">"enabled"</span> : <span class="hljs-literal">true</span>
@@ -199,7 +203,7 @@ was successfully applied or not.</li>
 above the &quot;Unused import&quot; warnings and can be triggered with the <code>CMD</code> + <code>.</code>
 shortcut (on macOS).</p>
 <p><img src="/metals/docs/assets/code-actions.gif" alt=""></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/metals/docs/troubleshooting.html">← Troubleshooting</a><a class="docs-next button" href="/metals/docs/new-build-tool.html">Integrating a new build tool →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#launching-the-server">Launching the server</a></li><li><a href="#working-directory">Working directory</a></li><li><a href="#file-watching">File watching</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#commands">Commands</a></li><li><a href="#code-actions">Code actions</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C"><section class="sitemap"><a href="/metals/" class="nav-home"><img src="/metals/img/scalameta-logo.png" alt="Metals" width="66" height="58"/></a><div><h5>Docs</h5><a href="
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/metals/docs/troubleshooting.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/metals/docs/new-build-tool.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#launching-the-server">Launching the server</a></li><li><a href="#working-directory">Working directory</a></li><li><a href="#file-watching">File watching</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#commands">Commands</a></li><li><a href="#code-actions">Code actions</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C"><section class="sitemap"><a href="/metals/" class="nav-home"><img src="/metals/img/scalameta-logo.png" alt="Metals" width="66" height="58"/></a><div><h5>Docs</h5><a href="
                 /metals/docs/overview.html">Overview</a><a href="
                 /metals/docs/getting-started-contributors.html">Contributors</a></div><div><h5>Community</h5><a href="https://gitter.im/scalameta/metals" target="_blank">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Metals</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({

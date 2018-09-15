@@ -14,6 +14,10 @@
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
 
+                if (!toggler) {
+                  return;
+                }
+
                 toggler.onclick = function(event) {
                   event.preventDefault();
 
@@ -21,7 +25,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/scalameta/metals/edit/master/docs/troubleshooting.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Troubleshooting</h1></header><article><div><span><ul>
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/scalameta/metals/edit/master/docs/troubleshooting.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Troubleshooting</h1></header><article><div><span><ul>
 <li><p>To view errors logs in VSCode, go to Help &gt; Toggle Developer Tools &gt; Console.</p></li>
 <li><p>If SymbolIndexerTest.classpath tests fail with missing definitions for <code>List</code>
 or <code>CharRef</code>, try to run <code>metalsSetup</code> from the sbt shell and then re-run.</p></li>
@@ -37,7 +41,7 @@ storing mechanism.</p></li>
 (<kbd>CMD</kbd> + <kbd>,</kbd> on macOS)
 and make sure the <code>&quot;metals.serverVersion&quot;</code> setting points to full version string of the server you have installed, or another existing version of the server (either locally or remotely published).</p></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/metals/docs/installation-contributors.html">← Installation</a><a class="docs-next button" href="/metals/docs/new-editor.html">Integrating a new editor →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C"><section class="sitemap"><a href="/metals/" class="nav-home"><img src="/metals/img/scalameta-logo.png" alt="Metals" width="66" height="58"/></a><div><h5>Docs</h5><a href="
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/metals/docs/installation-contributors.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/metals/docs/new-editor.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer" style="background-color:#1B555C"><section class="sitemap"><a href="/metals/" class="nav-home"><img src="/metals/img/scalameta-logo.png" alt="Metals" width="66" height="58"/></a><div><h5>Docs</h5><a href="
                 /metals/docs/overview.html">Overview</a><a href="
                 /metals/docs/getting-started-contributors.html">Contributors</a></div><div><h5>Community</h5><a href="https://gitter.im/scalameta/metals" target="_blank">Chat on Gitter</a></div><div><h5>More</h5><a href="https://github.com/scalameta/metals" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2018 Metals</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
