@@ -56,14 +56,13 @@ installed, be sure to update to the latest version with <code>:PlugUpdate</code>
 curl -L -o coursier https://git.io/coursier &amp;&amp;
     chmod +x coursier &amp;&amp;
 ./coursier bootstrap \
-  --standalone \
   --java-opt -XX:+UseG1GC \
   --java-opt -XX:+UseStringDeduplication  \
   --java-opt -Xss4m \
   --java-opt -Xms1G \
   --java-opt -Xmx4G  \
   --java-opt -Dmetals.client=vim-lsc \
-  org.scalameta:metals_2.12:0.2.0+3-82fa2560-SNAPSHOT \
+  org.scalameta:metals_2.12:0.2.0+4-c8944f21-SNAPSHOT \
   -r bintray:scalacenter/releases \
   -r sonatype:snapshots \
   -o metals-vim -f
