@@ -65,7 +65,7 @@ curl -L -o coursier https://git.io/coursier &amp;&amp;
   --java-opt -Xms1G \
   --java-opt -Xmx4G  \
   --java-opt -Dmetals.client=vim-lsc \
-  org.scalameta:metals_2.12:0.2.11+2-b7ebe2d9-SNAPSHOT \
+  org.scalameta:metals_2.12:0.2.11+5-1aeff4f0-SNAPSHOT \
   -r bintray:scalacenter/releases \
   -r sonatype:snapshots \
   -o metals-vim -f
@@ -97,7 +97,8 @@ and map <code>gd</code> to run &quot;Goto definition&quot;.</p>
 <p>Go to the root directory of an sbt build, open <code>build.sbt</code> and navigate to any
 <code>*.scala</code> source file.</p>
 <p>When Metals encounters a new sbt build it will prompt you to &quot;Import build via
-Bloop&quot;. Select <code>1</code> and press enter.</p>
+Bloop&quot;. Select <code>1</code> and press enter. You don't need Bloop installed on your
+machine to run this step.</p>
 <p><img src="../assets/vim-import-via-bloop.gif" alt="Import via Bloop"></p>
 <p>While the <code>sbt bloopInstall</code> step is running, no Metals functionality will work.</p>
 <p>This step can take a long time, especially the first time you run it in a new
