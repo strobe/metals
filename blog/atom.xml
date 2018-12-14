@@ -2,12 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://scalameta.org/metals/blog</id>
     <title>Metals Blog</title>
-    <updated>2018-12-12T06:00:00Z</updated>
+    <updated>2018-12-14T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="http://scalameta.org/metals/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Metals news and events.</subtitle>
     <logo>http://scalameta.org/metals/img/scalameta-logo.png</logo>
     <rights>Copyright © 2018 Metals</rights>
+    <entry>
+        <title type="html"><![CDATA[Metals v0.3.2]]></title>
+        <id>http://scalameta.org/metals/blog/2018/12/14/iron.html</id>
+        <link href="http://scalameta.org/metals/blog/2018/12/14/iron.html">
+        </link>
+        <updated>2018-12-14T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>We are pleased to announce the release of Metals v0.3.2. Metals is a language
+server for Scala that works with VS Code, Atom, Vim, Sublime Text and Emacs.
+Metals is developed at the <a href="https://scala.epfl.ch/">Scala Center</a> with
+contributors from the community.</p>
+]]></summary>
+        <author>
+            <name>Ólafur Páll Geirsson</name>
+            <uri>https://twitter.com/olafurpg</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fast goto definition with low memory footprint]]></title>
         <id>http://scalameta.org/metals/blog/2018/12/12/fast-goto-definition.html</id>
