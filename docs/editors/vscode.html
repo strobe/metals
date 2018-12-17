@@ -64,12 +64,13 @@ import sbt builds, but you don't need Bloop installed on your machine to run thi
 <p>Once the import step completes, compilation starts for your open <code>*.scala</code>
 files.</p>
 <p>Once the sources have compiled successfully, you can navigate the codebase with
-&quot;goto definition&quot; with <code>Cmd+Click</code>.</p>
+goto definition.</p>
 <h3><a class="anchor" aria-hidden="true" id="custom-sbt-launcher"></a><a href="#custom-sbt-launcher" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom sbt launcher</h3>
 <p>By default, Metals runs an embedded <code>sbt-launch.jar</code> launcher that respects <code>.sbtopts</code> and <code>.jvmopts</code>.
-The environment variables <code>SBT_OPTS</code> and <code>JAVA_OPTS</code> are also respected, but may not available to the Metals
-process in case it's started from a GUI application.</p>
-<p>Update the &quot;Sbt Script&quot; setting to use a custom <code>sbt</code> script instead of the embedded launcher.</p>
+However, the environment variables <code>SBT_OPTS</code> and <code>JAVA_OPTS</code> are not respected.</p>
+<p>Update the &quot;Sbt Script&quot; setting to use a custom <code>sbt</code> script instead of the
+default Metals launcher if you need further customizations like reading environment
+variables.</p>
 <p><img src="/metals/docs/assets/vscode-sbt-script.png" alt="Sbt Launcher"></p>
 <h3><a class="anchor" aria-hidden="true" id="speeding-up-import"></a><a href="#speeding-up-import" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Speeding up import</h3>
 <p>The &quot;Import build&quot; step can take a long time, especially the first time you
@@ -122,8 +123,8 @@ features.</p>
 <td>14 Dec 2018 19:06</td>
 </tr>
 <tr>
-<td>0.3.3+4-85d02278-SNAPSHOT</td>
-<td>15 Dec 2018 22:33</td>
+<td>0.3.3+6-1429582b-SNAPSHOT</td>
+<td>17 Dec 2018 10:53</td>
 </tr>
 </tbody>
 </table>
