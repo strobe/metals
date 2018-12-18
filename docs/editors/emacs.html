@@ -48,10 +48,17 @@ Note that 2.10.x and 2.13.0-M5 are not supported.</p>
 </code></pre>
 <p>Next, update your Emacs configuration to load <code>lsp-scala</code> along with its
 dependencies</p>
-<pre><code class="hljs css language-el"><span class="hljs-comment">;; Enable scala-mode and sbt-mode</span>
+<pre><code class="hljs css language-el"><span class="hljs-comment">;; Add melpa-stable to your packages repositories</span>
+(<span class="hljs-name">add-to-list</span> 'package-archives '(<span class="hljs-string">"melpa-stable"</span> . <span class="hljs-string">"https://stable.melpa.org/packages/"</span>) <span class="hljs-literal">t</span>)
+
+<span class="hljs-comment">;; Enable defer and ensure by default for use-package</span>
+(<span class="hljs-name">setq</span> use-package-always-defer <span class="hljs-literal">t</span>
+      use-package-always-ensure <span class="hljs-literal">t</span>)
+
+<span class="hljs-comment">;; Enable scala-mode and sbt-mode</span>
 (<span class="hljs-name">use-package</span> scala-mode
-  <span class="hljs-symbol">:interpreter</span>
-  (<span class="hljs-string">"scala"</span> . scala-mode))
+  <span class="hljs-symbol">:mode</span> <span class="hljs-string">"\\.s\\(cala\\|bt\\)$"</span>)
+
 (<span class="hljs-name">use-package</span> sbt-mode
   <span class="hljs-symbol">:commands</span> sbt-start sbt-command
   <span class="hljs-symbol">:config</span>
@@ -64,19 +71,18 @@ dependencies</p>
 
 <span class="hljs-comment">;; Enable nice rendering of diagnostics like compile errors.</span>
 (<span class="hljs-name">use-package</span> flycheck
-  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
   <span class="hljs-symbol">:init</span> (<span class="hljs-name">global-flycheck-mode</span>))
-(<span class="hljs-name">use-package</span> lsp-ui)
-(<span class="hljs-name">require</span> 'lsp-ui)
 
-(<span class="hljs-name">use-package</span> lsp-mode)
-(<span class="hljs-name">add-hook</span> 'lsp-mode-hook 'lsp-ui-mode )
-(<span class="hljs-name">require</span> 'lsp-mode)
-(<span class="hljs-name">require</span> 'sbt-mode)
+(<span class="hljs-name">use-package</span> lsp-mode
+  <span class="hljs-symbol">:pin</span> melpa-stable)
 
-(<span class="hljs-name">add-to-list</span> 'load-path <span class="hljs-string">"~/path/to/lsp-scala"</span>)
-(<span class="hljs-name">require</span> 'lsp-scala)
-(<span class="hljs-name">add-hook</span> 'scala-mode-hook #'lsp-scala-enable)
+(<span class="hljs-name">use-package</span> lsp-ui
+  <span class="hljs-symbol">:pin</span> melpa-stable
+  <span class="hljs-symbol">:hook</span> (<span class="hljs-name">lsp-mode</span> . lsp-ui-mode))
+
+(<span class="hljs-name">use-package</span> lsp-scala
+  <span class="hljs-symbol">:load-path</span> <span class="hljs-string">"~/path/to/lsp-scala"</span>
+  <span class="hljs-symbol">:hook</span> (<span class="hljs-name">scala-mode</span> . lsp-scala-enable))
 </code></pre>
 <blockquote>
 <p>You may need to disable other packages like <code>ensime</code> or sbt server to prevent
@@ -99,8 +105,8 @@ not exist yet.</p>
 <td><code>-r sonatype:releases</code></td>
 </tr>
 <tr>
-<td>0.3.3+15-d4199aa5-SNAPSHOT</td>
-<td>17 Dec 2018 17:29</td>
+<td>0.3.3+22-0d504ea6-SNAPSHOT</td>
+<td>18 Dec 2018 12:12</td>
 <td><code>-r sonatype:snapshots</code></td>
 </tr>
 </tbody>
